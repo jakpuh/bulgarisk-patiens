@@ -22,6 +22,7 @@ function removeEmpty(kort) {
 }
 
 korten = [3,2,2,54,5,43,42,5,2,6,6,2,8,4321,4,636,4839,2,32,43,424,3,231,372,5434,463,3232,56543]
+// korten = [4, 3];
 dp = {}
 
 let start = Date.now();
@@ -33,7 +34,7 @@ for (var i = 0;; ++i) {
         if (dp[kortenStr] === i - 1) {
             console.log("patiensen har gått ut :(");
         } else {
-            console.log("patiensen har INTE gått ut :)");
+            console.log(`patiensen går inte ut :) med än cykel på ${i - dp[kortenStr]} drag`);
         }
         break;
     }
