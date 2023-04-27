@@ -36,8 +36,13 @@ html {
 }
 
 .img{
+<<<<<<< HEAD
     width: 100%;
     margin-bottom: -132%;
+=======
+    max-width: 100%;
+    margin-bottom: -130%;
+>>>>>>> 7d109ee4b2ea062fea7174a36c5c7bb7c67240d6
     border-radius: 5%;
     -webkit-box-shadow: 0px -3px 15px 0px rgba(0, 66, 12,0.5); 
     box-shadow: 0px -3px 15px 0px rgba(0, 66, 12, 0.5);
