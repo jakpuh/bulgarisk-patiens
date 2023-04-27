@@ -1,49 +1,4 @@
-/*const stacks = [2,3,4,5,6];
-
-
-function 
-for (i of stacks){
-
-}
-document.getElementById
-*/
-
-// var root = document.querySelector(":root");
-// let containerWidth = `${100/document.querySelectorAll(".flex-column-container").length}%`;
-// root.style.setProperty("--item-width", containerWidth);
-
-// let textOffset = `${document.getElementById("text").innerHTML.length * -12}px`
-// console.log(textOffset)
-// root.style.setProperty("--text-size", textOffset)
-
-// let imgMargin = 0;
-
-// for (let i of document.getElementsByClassName("flex-column-container")){
-//     if (i.childElementCount > imgMargin){
-//         imgMargin = i.childElementCount
-//         console.log(imgMargin)
-//     }
-// }
-
-// console.log(imgMargin)
-// //imgMargin = `${-(550/imgMargin + 10)}%`
-// imgMargin = `${imgMargin * (-119.226/imgMargin + 0.306372)}%`
-// console.log(imgMargin)
-
-// root.style.setProperty("--img-margin", imgMargin);
-
-
-
-
-/*const stacks = [2,3,4,5,6];
-
-
-function 
-for (i of stacks){
-
-}
-document.getElementById
-*/
+import { nextDrag } from "./script.js";
 
 const root = document.querySelector(":root");
 const containerRow = document.querySelector(".flex-row-container")
@@ -55,7 +10,7 @@ function setWidth(cardStackCount) {
 }
 
 function addCard(column) {
-    newCard = document.createElement('img');
+    const newCard = document.createElement('img');
     newCard.classList.add('img');
     column.appendChild(newCard);
     newCard.src = "baksida-kort.png";
@@ -63,7 +18,8 @@ function addCard(column) {
 }
 
 function displayCardStacks(cardStacks) {
-    for (stackHeight of cardStacks) {
+    containerRow.replaceChildren();
+    for (const stackHeight of cardStacks) {
         const newColumn = document.createElement('div');
         newColumn.classList.add("flex-column-container");
         for (let i = 0; i < stackHeight; ++i) {
@@ -74,19 +30,11 @@ function displayCardStacks(cardStacks) {
     setWidth(cardStacks.length);
 }
 
-displayCardStacks([1,2,3,4]);
-
-
-// for (let i of document.getElementsByClassName("flex-column-container")){
-//     if (i.childElementCount > imgMargin){
-//         imgMargin = i.childElementCount
-//         console.log(imgMargin)
-//     }
-// }
-
-// console.log(imgMargin)
-// //imgMargin = `${-(550/imgMargin + 10)}%`
-// imgMargin = `${imgMargin * (-119.226/imgMargin + 0.306372)}%`
-// console.log(imgMargin)
-
-// root.style.setProperty("--img-margin", imgMargin);
+(async() => {
+    console.log("Running");
+    // displayCardStacks([4,3]);
+    for (const [kort, iteration, subiteration] of nextDrag([4,3])) {
+        await new Promise(r => setTimeout(r, 1000));
+        console.log(kort, iteration, subiteration);
+    }
+})();
