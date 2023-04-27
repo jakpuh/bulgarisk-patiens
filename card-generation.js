@@ -12,9 +12,43 @@ var root = document.querySelector(":root");
 let containerWidth = `${100/document.querySelectorAll(".flex-column-container").length}%`;
 root.style.setProperty("--item-width", containerWidth);
 
-let textOffset = `${document.getElementById("text").innerHTML.length * -12}px`
-console.log(textOffset)
-root.style.setProperty("--text-size", textOffset)
+let stacks = [];
+let count = 0
+
+for (let svg of document.querySelectorAll("svg")){
+    svg.innerHTML = '<text x="50" y="80" class="text"></text>'
+}
+
+for (let columnContainer of document.querySelectorAll(".flex-column-container")){
+    stacks.push(columnContainer.childElementCount-1)
+}
+
+
+for (let element of document.getElementsByClassName("text")){
+
+    element.innerHTML = stacks[count]
+
+    switch (element.innerHTML.length) {
+        case 0:
+            break;
+        case 1:
+            element.style.transform = "translateX(-12px)"
+            break;
+        case 2:
+            element.style.transform = "translateX(-24px)"
+            break;
+        case 3:
+            element.style.transform = "translateX(-36px)"
+            break;
+        case 4:
+            element.style.transform = "translateX(-48px)"
+            break;
+        default:
+            break;
+    }
+
+    count++
+}
 
 let imgMargin = 0;
 
