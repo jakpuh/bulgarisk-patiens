@@ -12,6 +12,10 @@ var root = document.querySelector(":root");
 let containerWidth = `${100/document.querySelectorAll(".flex-column-container").length}%`;
 root.style.setProperty("--item-width", containerWidth);
 
+let textOffset = `${document.getElementById("text").innerHTML.length * -12}px`
+console.log(textOffset)
+root.style.setProperty("--text-size", textOffset)
+
 let imgMargin = 0;
 
 for (let i of document.getElementsByClassName("flex-column-container")){
