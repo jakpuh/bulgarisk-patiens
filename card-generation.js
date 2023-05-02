@@ -29,12 +29,18 @@ function createRedCard(column) {
     newCard.alt = "kort";
 }
 
-function createBlueCard(column) {
-    const newCard = document.createElement('img');
-    newCard.classList.add('img');
-    column.appendChild(newCard);
+function createBlueCard(column, interval) {
+    const newCard = document.createElement('input');
+    newCard.type = "image";
     newCard.src = "baksida-kort-blue.png";
     newCard.alt = "kort";
+    newCard.setAttribute("interval_start", interval[0]);
+    newCard.setAttribute("interval_end", interval[1]);
+    newCard.classList.add("img");
+    newCard.addEventListener('click', (event) => {
+        console.log("tag clicked with interval: ", event.target.getAttribute("interval_start"), "-", event.target.getAttribute("interval_end"));
+    });
+    column.appendChild(newCard);
 }
 
 function displayCardStacks(cardStacks) {
@@ -47,7 +53,7 @@ function displayCardStacks(cardStacks) {
                 createRedCard(newColumn);
             }
         } else {
-            createBlueCard(newColumn);
+            createBlueCard(newColumn, stack.interval);
         }
         containerRow.appendChild(newColumn);
     }
@@ -86,30 +92,31 @@ function getStacksToDisplay(cardStacks, interval) {
     return result;
 }
 
-// let arr = [];
-// for (let i = 0; i < 121; ++i) {
-//     arr.push(i);
-// }
-// const res = (getStacksToDisplay(arr, [1, 25]));
-// res.forEach((elem) => {
-//     console.log(elem.interval);
-// })
-// console.log(res);
+let arr = [];
+for (let i = 0; i < 121; ++i) {
+    arr.push(i);
+}
+const res = (getStacksToDisplay(arr, [1, 25]));
+res.forEach((elem) => {
+    console.log(elem.interval);
+})
+console.log(res);
+displayCardStacks(res);
 
-(async() => {
-    console.log("Running");
-    let start = [];
-    for (let i = 1; i < 123; ++i) {
-        start.push(4);
-    }
-    // Make nextDrag return a object of a class instead
-    for (const [kort, iteration, subiteration] of nextDrag(start)) {
-        displayCardStacks(getStacksToDisplay(kort, [0, kort.length]));
-        console.log(kort, iteration, subiteration);
-        if(subiteration == 0) {
-            await new Promise(r => setTimeout(r, 100));
-        } else {
-            await new Promise(r => setTimeout(r, 100));
-        }
-    }
-})();
+// (async() => {
+//     console.log("Running");
+//     let start = [];
+//     for (let i = 1; i < 123; ++i) {
+//         start.push(4);
+//     }
+//     // Make nextDrag return a object of a class instead
+//     for (const [kort, iteration, subiteration] of nextDrag(start)) {
+//         displayCardStacks(getStacksToDisplay(kort, [0, kort.length]));
+//         console.log(kort, iteration, subiteration);
+//         if(subiteration == 0) {
+//             await new Promise(r => setTimeout(r, 100));
+//         } else {
+//             await new Promise(r => setTimeout(r, 100));
+//         }
+//     }
+// })();
