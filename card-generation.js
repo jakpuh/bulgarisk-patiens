@@ -9,44 +9,29 @@ document.getElementById
 */
 
 var root = document.querySelector(":root");
-let containerWidth = `${100/document.querySelectorAll(".flex-column-container").length}%`;
+let containerWidth = `${100/document.querySelectorAll(".flex-column-container").length}wv`;
 root.style.setProperty("--item-width", containerWidth);
 
 let stacks = [];
 let count = 0
 
+for (let columnContainer of document.querySelectorAll(".flex-column-container")){
+    stacks.push(columnContainer.childElementCount-1)
+    let svgText = document.createElement("svg")
+    svgText.style.aspectRatio = "1/1"
+    columnContainer.appendChild(svgText)
+    
+}
+
 for (let svg of document.querySelectorAll("svg")){
+    svg.setAttribute("viewBox", "0 0 100 100")
     svg.innerHTML = '<text x="50" y="80" class="text"></text>'
 }
 
-for (let columnContainer of document.querySelectorAll(".flex-column-container")){
-    stacks.push(columnContainer.childElementCount-1)
-}
 
 
 for (let element of document.getElementsByClassName("text")){
-
-    element.innerHTML = stacks[count]
-
-    switch (element.innerHTML.length) {
-        case 0:
-            break;
-        case 1:
-            element.style.transform = "translateX(-12px)"
-            break;
-        case 2:
-            element.style.transform = "translateX(-24px)"
-            break;
-        case 3:
-            element.style.transform = "translateX(-36px)"
-            break;
-        case 4:
-            element.style.transform = "translateX(-48px)"
-            break;
-        default:
-            break;
-    }
-
+    element.innerHTML = stacks[count] + 1
     count++
 }
 
