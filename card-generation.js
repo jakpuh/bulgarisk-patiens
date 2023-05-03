@@ -37,7 +37,13 @@ function createBlueCard(column, interval) {
     newCard.setAttribute("interval_start", interval[0]);
     newCard.setAttribute("interval_end", interval[1]);
     newCard.classList.add("img");
+    // newCard.addEventListener('click', (event) => {
+    //     console.log("tag clicked with interval: ", event.target.getAttribute("interval_start"), "-", event.target.getAttribute("interval_end"));
+    // });
     newCard.addEventListener('click', (event) => {
+        const interval = [parseInt(event.target.getAttribute("interval_start")), parseInt(event.target.getAttribute("interval_end"))];
+        console.log("Displaying new interval: ", interval);
+        update(interval);
         console.log("tag clicked with interval: ", event.target.getAttribute("interval_start"), "-", event.target.getAttribute("interval_end"));
     });
     column.appendChild(newCard);
@@ -84,7 +90,7 @@ function getStacksToDisplay(cardStacks, interval) {
         if (tmpResult[i] > 1) {
             result.push(new StackBlue([currentStack, currentStack + tmpResult[i]]));
         } else {
-            result.push(new StackRed(cardStacks[i]));
+            result.push(new StackRed(cardStacks[currentStack]));
         }
         currentStack += tmpResult[i];
     }
@@ -96,12 +102,24 @@ let arr = [];
 for (let i = 0; i < 121; ++i) {
     arr.push(i);
 }
-const res = (getStacksToDisplay(arr, [1, 25]));
-res.forEach((elem) => {
-    console.log(elem.interval);
-})
-console.log(res);
-displayCardStacks(res);
+update([0, arr.length]);
+
+function update(interval) {
+    const res = (getStacksToDisplay(arr, interval));
+    res.forEach((elem) => {
+        console.log(elem.interval);
+    })
+    console.log(res);
+    displayCardStacks(res);
+}
+
+function waitForKeyPress() {
+    return new Promise(function(resolve) {
+        document.addEventListener('keydown', function onKeyPress(event) {
+            resolve(event.key);
+        })
+    })
+}
 
 // (async() => {
 //     console.log("Running");
@@ -114,7 +132,11 @@ displayCardStacks(res);
 //         displayCardStacks(getStacksToDisplay(kort, [0, kort.length]));
 //         console.log(kort, iteration, subiteration);
 //         if(subiteration == 0) {
-//             await new Promise(r => setTimeout(r, 100));
+//             // await new Promise(r => setTimeout(r, 2000));
+//             do {
+//                 const keyCode = await waitForKeyPress();
+//                 if (keyCode === 'Enter') break;
+//             } while(true);
 //         } else {
 //             await new Promise(r => setTimeout(r, 100));
 //         }
