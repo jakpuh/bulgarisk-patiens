@@ -55,7 +55,7 @@ function displayCardStacks(cardStacks) {
         const newColumn = document.createElement('div');
         newColumn.classList.add("flex-column-container");
         if (stack instanceof StackRed) {
-            for (let i = 0; i < stack.count; ++i) {
+            for (let i = 0; i < Math.min(stack.count, 20); ++i) {
                 createRedCard(newColumn);
             }
         } else {
@@ -99,7 +99,7 @@ function getStacksToDisplay(cardStacks, interval) {
 }
 
 let arr = [];
-for (let i = 0; i < 121; ++i) {
+for (let i = 0; i < 50000; ++i) {
     arr.push(i);
 }
 update([0, arr.length]);
