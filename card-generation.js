@@ -17,36 +17,29 @@ let count = 0
 
 for (let columnContainer of document.querySelectorAll(".flex-column-container")){
     stacks.push(columnContainer.childElementCount-1)
-    let svgText = document.createElement("svg")
-    svgText.style.aspectRatio = "1/1"
-    columnContainer.appendChild(svgText)
+    let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg")
+    svg.style.aspectRatio = "1/1"
+    svg.setAttributeNS(null, "id", "svg")
+    svg.setAttributeNS(null, "viewBox", "0 0 100 100")
+    svg.setAttributeNS(null, "class", "svg")
+    columnContainer.appendChild(svg)
     
 }
 
-for (let svg of document.querySelectorAll("svg")){
-    svg.setAttribute("viewBox", "0 0 100 100")
-    svg.innerHTML = '<text x="50" y="80" class="text"></text>'
+for (let svg of document.getElementsByClassName("svg")){
+    var text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    text.textContent = "tom";
+    text.setAttributeNS(null, 'x', 40);
+    text.setAttributeNS(null, 'y', 80);
+    text.setAttributeNS(null, "class", "text")
+    svg.appendChild(text)
 }
-
 
 
 for (let element of document.getElementsByClassName("text")){
     element.innerHTML = stacks[count] + 1
     count++
+
+    element.style.transform = `translateX(${-15 * (element.innerHTML.length-1)}px)`
+    
 }
-
-let imgMargin = 0;
-
-for (let i of document.getElementsByClassName("flex-column-container")){
-    if (i.childElementCount > imgMargin){
-        imgMargin = i.childElementCount
-        console.log(imgMargin)
-    }
-}
-
-console.log(imgMargin)
-//imgMargin = `${-(550/imgMargin + 10)}%`
-imgMargin = `${imgMargin * (-119.226/imgMargin + 0.306372)}%`
-console.log(imgMargin)
-
-root.style.setProperty("--img-margin", imgMargin);
