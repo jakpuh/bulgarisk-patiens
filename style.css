@@ -49,35 +49,10 @@ html {
     /* transition: transform 2s; */
 }
 
-.card-tmp {
-    display: flex;
-    background-image: url("baksida-kort.png");
-    aspect-ratio: 333 / 470;
-    background-size: cover;
-    justify-content: center;
-    align-items: center;
-    font-size: 200%;
-}
-
-.img:hover{
-    /* transform: translateY(200px); */
+#svg{
+    font-size: 50px;
 }
 
 .text{
-    font-size: 300%;
-    fill: rgba(93, 93, 93, 0.848);
-    /* transform: translateX(var(--text-size)); */
-}
-
-
-
-.module h2 {
-    font-size: 1em;
-    container-name: sidebar
-}
-
-@container sidebar (min-width: 700px) {
-    .module h2 {
-        font-size: 2em;
-    }
+    fill: green;
 }
