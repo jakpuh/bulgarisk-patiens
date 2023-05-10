@@ -98,11 +98,11 @@ function getStacksToDisplay(cardStacks, interval) {
     return result;
 }
 
-let arr = [];
-for (let i = 0; i < 50000; ++i) {
-    arr.push(i);
-}
-update([0, arr.length]);
+// let arr = [];
+// for (let i = 1; i < 25; ++i) {
+//     arr.push(i);
+// }
+// update([1, arr.length]);
 
 function update(interval) {
     const res = (getStacksToDisplay(arr, interval));
@@ -122,23 +122,23 @@ function waitForKeyPress() {
 }
 
 // (async() => {
-//     console.log("Running");
-//     let start = [];
-//     for (let i = 1; i < 123; ++i) {
-//         start.push(4);
-//     }
-//     // Make nextDrag return a object of a class instead
-//     for (const [kort, iteration, subiteration] of nextDrag(start)) {
-//         displayCardStacks(getStacksToDisplay(kort, [0, kort.length]));
-//         console.log(kort, iteration, subiteration);
-//         if(subiteration == 0) {
-//             // await new Promise(r => setTimeout(r, 2000));
-//             do {
-//                 const keyCode = await waitForKeyPress();
-//                 if (keyCode === 'Enter') break;
-//             } while(true);
-//         } else {
-//             await new Promise(r => setTimeout(r, 100));
-//         }
-//     }
+    // console.log("Running");
+    // // let start = [];
+    // // for (let i = 1; i < 123; ++i) {
+    // //     start.push(4);
+    // // }
+    // // Make nextDrag return a object of a class instead
+    // for (const [kort, iteration, subiteration] of nextDrag(arr)) {
+    //     displayCardStacks(getStacksToDisplay(kort, [0, kort.length]));
+    //     console.log(kort, iteration, subiteration);
+    //     if(subiteration == 0) {
+    //         // await new Promise(r => setTimeout(r, 2000));
+    //         do {
+    //             const keyCode = await waitForKeyPress();
+    //             if (keyCode === 'Enter') break;
+    //         } while(true);
+    //     } else {
+    //         await new Promise(r => setTimeout(r, 100));
+    //     }
+    // }
 // })();
