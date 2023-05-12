@@ -101,7 +101,7 @@ function getStacksToDisplay(cardStacks, interval) {
 }
 
 let arr = [];
-for (let i = 1; i < 5; ++i) {
+for (let i = 1; i < 30; ++i) {
     arr.push(i);
 }
 displayCardStacks(getStacksToDisplay(arr, [0, arr.length]));
@@ -172,5 +172,27 @@ function displayNumber(cardStacks) {
 
         element.style.transform = `translateX(${-15 * (element.innerHTML.length-1)}px)`;
         
+    }
+}
+
+export async function start(cardStacks){
+    console.log("Running");
+    // let start = [];
+    // for (let i = 1; i < 123; ++i) {
+    //     start.push(4);
+    // }
+    // // Make nextDrag return a object of a class instead
+    for (const [kort, iteration, subiteration] of nextDrag(cardStacks)) {
+        displayCardStacks(getStacksToDisplay(kort, [0, kort.length]));
+        console.log(kort, iteration, subiteration);
+        if(subiteration == 0) {
+            await new Promise(r => setTimeout(r, 2000));
+            //do {
+            //    const keyCode = await waitForKeyPress();
+            //    if (keyCode === 'Enter') break;
+            //} while(true);
+        } else {
+            await new Promise(r => setTimeout(r, 100));
+        }
     }
 }
