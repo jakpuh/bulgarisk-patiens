@@ -6,16 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script type="module" src=script.js defer></script>
-    <script type="module" src=card-generation.js defer></script>
+    <script type="module" src=cards-visualizer.js defer></script>
     <script type="module" src="submit.js" defer></script>
+    <script type="module" src="ui-manager.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="result-box"><div class="result"></div></div>
+
     <div class="input-container">
         <input id="submit" type="text">
         <button id="button">submit</button>
     </div>
 
     <div class="flex-row-container"></div>
+
+    <div class="bottom-container">
+        <div class="speed-controller">
+            <img class="img-icon" src="images/sköldpadda.png" alt="sköldpadda">
+            <input type="range" min="10" max="2000" value="1000" class="slider speed-slider">
+            <img class="img-icon" src="images/kanin.png" alt="kanin">
+        </div>
+            
+        <input type="range" min="0" max="100" value="0" class="slider move-slider">
+
+        <div class="move-controllers">
+            <button class="skip-backward-button img-button" style="background-image: url('images/skip-backward.png')"></button>
+            <button class="skip-previous-button img-button" style="background-image: url('images/skip-previous.png')"></button>
+            <button class="pause-button img-button" style="background-image: url('images/pause-icon.png')"></button>
+            <button class="skip-button img-button" style="background-image: url('images/skip-icon.png')"></button>
+            <button class="fastforward-button img-button" style="background-image: url('images/fastforward-icon.png')"></button>
+        </div>
+    </div>
 </body>
 </html>
