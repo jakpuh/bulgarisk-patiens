@@ -41,9 +41,9 @@ export default {
     },
 
     async run() {
+        sendStateEvent();
         if (running) return;
         running = true;
-        sendStateEvent();
         for (;;) {
             await new Promise(r => setTimeout(r, state.delayMajor));
             if (!state.finished && !state.pause) {
