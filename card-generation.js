@@ -55,7 +55,7 @@ function displayCardStacks(cardStacks) {
         const newColumn = document.createElement('div');
         newColumn.classList.add("flex-column-container");
         if (stack instanceof StackRed) {
-            for (let i = 0; i < Math.min(stack.count, 20); ++i) {
+            for (let i = 0; i < Math.min(stack.count, 52); ++i) {
                 createRedCard(newColumn);
             }
         } else {
