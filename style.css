@@ -63,3 +63,96 @@ html {
 .text{
     fill: green;
 }
+
+#submit, button{
+    padding:7px;
+    margin: 5px;
+    border: 2px solid rgb(2, 62, 2);
+    border-radius: 5px;
+
+    box-shadow: 0px -3px 15px 0px rgba(0, 66, 12, 0.5);
+}
+
+.bottom-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: blue;
+    width: 100wv;
+    height: 5vh;
+    gap: 5vw;
+}
+
+.slider{
+    height: 5vh;
+    outline: none;
+    background: #ca1616;
+    cursor: pointer;
+}
+
+#speed{
+    width: 15vw;
+}
+
+#move{
+    width: 30vw;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+button:active{
+    transform: scale(0.9, 0.9);
+}
+
+.pause-button{
+    aspect-ratio: 1/1;
+    height: 5vh;
+    background-color: transparent;
+
+    padding:0;
+    border:0;
+    margin:0;
+
+    box-shadow: none;
+}
+
+.pause-image{
+    aspect-ratio: 1/1;
+    height: 5vh;
+}
+
+.rewind-button{
+    aspect-ratio: 1/1;
+    height: 5vh;
+    background-color: transparent;
+
+    padding:0;
+    border:0;
+    margin:0;
+
+    box-shadow: none;
+}
+
+.rewind-image{
+    aspect-ratio: 1/1;
+    height: 5vh;
+}
+
+.fastforward-button{
+    aspect-ratio: 632/395;
+    height: 5vh;
+    background-color: transparent;
+
+    padding: 0;
+    border: 0;
+    margin: 0;
+
+    box-shadow: none;
+}
+
+.fastforward-image{
+    aspect-ratio: 632/395;
+    height: 5vh;
+}
